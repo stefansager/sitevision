@@ -1,0 +1,21 @@
+##
+## @author Stefan Sager [stefan.sager@consid.se]
+##
+## Velocity-mall för dynamisk evaluering i söklistning som listar alla sidor som jag är ansvarig för.
+##
+## Vilken användarproperty att söka på, kolla userInfo för att se vilka som finns
+#set ($property = "uid")
+##
+## Metadata definitionens identifierare
+#set ($metadata = "pageResponsible")
+##
+## Utils
+##
+#set ($sitevisionUtils = $request.getAttribute('sitevision.utils'))
+#set ($propertyUtil = $sitevisionUtils.getPropertyUtil())
+#set ($portletContextUtil = $sitevisionUtils.getPortletContextUtil())
+
+#set ($currentUser = $portletContextUtil.getCurrentUser())
+#set ($value = $propertyUtil.getString($currentUser, $property, null))
+
+metadata.$metadata:"$value"
